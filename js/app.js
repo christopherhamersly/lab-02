@@ -45,9 +45,9 @@ let keywordFiller = (obj) => {
 const boxFiller = () => {
   keywordArray.forEach(value => {
     let $newOption = $(`<option>${value}</option>`);
-    $newOption.attr('value', value);
+    $newOption.attr(`value`, `${value}`);
     $('select').append($newOption);
-  })
+  });
 }
 
 const populateBox= () => {
@@ -55,7 +55,9 @@ const populateBox= () => {
   boxFiller();
 }
 
-$('select').on('click', function(event){
+
+
+$('select').on('change', function(event){
   event.preventDefault();
   if ($(this).val() !== 'default'){
     $('main').empty();
@@ -68,7 +70,7 @@ $('select').on('click', function(event){
     $('main').empty();
     allHorns.forEach(value => value.render());
   }
-})
+});
 
 
 
