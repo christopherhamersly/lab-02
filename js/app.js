@@ -58,7 +58,6 @@ const populateBox= () => {
 
 
 $('select').on('change', function(event){
-  event.preventDefault();
   if ($(this).val() !== 'default'){
     $('main').empty();
     allHorns.forEach(value => {
