@@ -1,10 +1,10 @@
 h1 {
+  color: rgb(41, 40, 40);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 70px;
-  text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
-  color: rgb(41, 40, 40)
+  text-align: center;
 }
 
 h1:hover{
@@ -13,9 +13,50 @@ h1:hover{
 }
 
 select{
-  font-size: 20px;
+ font-size: 20px;
  padding-bottom: 10px;
  padding-top: 10px;
  margin-left: 100px;
  margin-bottom: 30px;
+}
+
+img{
+  margin:auto;
+  width: 390px;
+}
+
+p {
+  font-size: 12px;
+  font-family:'Roboto Condensed', sans-serif;
+  margin:auto;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: 'Lexend Tera', sans-serif;
+  margin-top: 40px;
+}
+
+section:nth-child(odd){
+  background-color: #999;
+  float: left;
+  height: 450px;
+  margin-left: 100px;
+  width: 400px;
+}
+section:nth-child(even){
+  background-color: #999;
+  float: right;
+  height: 450px;
+  margin-right: 100px;
+  width: 400px;
+}
+section:nth-child(odd):hover{
+  background-color: red;
+  opacity: 50%;
+}
+
+section:nth-child(even):hover{
+  background-color: gold;
+  opacity: 50%;
 }
