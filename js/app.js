@@ -1,8 +1,8 @@
 'use strict';
 
-
-
 let allHorns =[];
+let keywordArray = [];
+const newTemplate = $('#photo-template').html();
 
 function Horn(obj){
   this.title = obj.title;
@@ -14,7 +14,6 @@ function Horn(obj){
 }
 
 Horn.prototype.render = function (){
-  const newTemplate = $('#photo-template').html();
   const $newSection = $(`<section>${newTemplate}</section>`);
   $newSection.find('h2').text(this.keyword);
   $newSection.find('p').text(this.description);
@@ -24,10 +23,56 @@ Horn.prototype.render = function (){
 };
 
 $(document).ready(function(){
-  $.ajax('page-1.json', {method: 'GET', dataType:'JSON'})
+  $.ajax('data/page-1.json', {method: 'GET', dataType:'JSON'})
     .then(allHornAnimal => {
       allHornAnimal.forEach(value => {
         new Horn(value).render();
+        keywordFiller(allHorns);
       });
+      keywordFiller(allHorns);
+      populateBox();
     });
 });
+
+let keywordFiller = (obj) => {
+  obj.forEach(value=>{
+    if(!keywordArray.includes(value.keyword)){
+      keywordArray.push(value.keyword);
+    }
+  });
+};
+
+const boxFiller = () => {
+  keywordArray.forEach(value => {
+    let $newOption = $(`<option>${value}</option>`);
+    $newOption.attr('value', value);
+    $('select').append($newOption);
+  })
+}
+
+const populateBox= () => {
+  keywordFiller(allHorns);
+  boxFiller();
+}
+
+$('select').on('click', function(event){
+  event.preventDefault();
+  if ($(this).val() !== 'default'){
+    $('main').empty();
+    allHorns.forEach(value => {
+      if($(this).val() === value.keyword){
+        value.render();
+      }
+    });
+  } else {
+    $('main').empty();
+    allHorns.forEach(value => value.render());
+  }
+})
+
+
+
+
+
+
+
