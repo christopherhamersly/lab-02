@@ -21,8 +21,8 @@ select{
 }
 
 img{
-  margin:auto;
-  width: 390px;
+  padding: 15px;
+  height: 300px;
 }
 
 p {
@@ -38,17 +38,13 @@ h2 {
 }
 
 section:nth-child(odd){
-  background-color: #999;
-  float: left;
+  
   height: 450px;
-  margin-left: 100px;
   width: 400px;
 }
 section:nth-child(even){
-  background-color: #999;
-  float: right;
+  
   height: 450px;
-  margin-right: 100px;
   width: 400px;
 }
 section:nth-child(odd):hover{

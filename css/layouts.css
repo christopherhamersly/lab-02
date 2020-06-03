@@ -1,6 +1,10 @@
 main { 
 text-align: center;
-display: inline-block;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+margin: auto;
+justify-content: center;
 }
 
 footer {

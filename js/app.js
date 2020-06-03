@@ -1,8 +1,10 @@
+/* eslint-disable indent */
 'use strict';
 
 let allHorns =[];
 let keywordArray = [];
 const newTemplate = $('#photo-template').html();
+
 
 function Horn(obj){
   this.title = obj.title;
@@ -22,8 +24,11 @@ Horn.prototype.render = function (){
   $('main').append($newSection);
 };
 
+//Populate page one
 $(document).ready(function(){
-  $.ajax('data/page-1.json', {method: 'GET', dataType:'JSON'})
+
+
+$.ajax('data/page-1.json', {method: 'GET', dataType:'JSON'})
     .then(allHornAnimal => {
       allHornAnimal.forEach(value => {
         new Horn(value).render();
@@ -43,10 +48,16 @@ let keywordFiller = (obj) => {
 };
 
 const boxFiller = () => {
+  $('select').empty();
+  let $newOption = $(`<option></option>`);
+  $newOption.text('Filter By Category');
+  $newOption.attr('value', 'default');
+  $('select').append($newOption);
+
   keywordArray.forEach(value => {
-    let $newOption = $(`<option>${value}</option>`);
+    $newOption = $(`<option>${value}</option>`);
     $newOption.attr(`value`, `${value}`);
-    $('select').append($newOption);
+    $('select').first().append($newOption);
   });
 }
 
@@ -54,8 +65,6 @@ const populateBox= () => {
   keywordFiller(allHorns);
   boxFiller();
 }
-
-
 
 $('select').on('change', function(event){
   if ($(this).val() !== 'default'){
@@ -70,6 +79,43 @@ $('select').on('change', function(event){
     allHorns.forEach(value => value.render());
   }
 });
+
+$('#button1').on('click', function(){
+  // wipe the previous shown data
+    $('main').empty();
+  // populate it with information
+    $.ajax('data/page-1.json', {method: 'GET', dataType:'JSON'})
+      .then(allHornAnimal => {
+        allHornAnimal.forEach(value => {
+          new Horn(value).render();
+          keywordFiller(allHorns);
+        });
+        keywordFiller(allHorns);
+        populateBox();
+      });
+  });
+
+// create an event listener
+$('#button2').on('click', function(){
+// wipe the previous shown data
+  $('main').empty();
+// populate it with information
+  $.ajax('data/page-2.json', {method: 'GET', dataType:'JSON'})
+    .then(allHornAnimal => {
+      allHornAnimal.forEach(value => {
+        new Horn(value).render();
+        keywordFiller(allHorns);
+      });
+      keywordFiller(allHorns);
+      populateBox();
+    });
+
+});
+// sort that information
+//
+
+
+
 
 
 
