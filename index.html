@@ -8,15 +8,24 @@
   <link href="css/layouts.css" rel="stylesheet" type="text/css"/>
   <link href="css/modules.css" rel="stylesheet" type="text/css"/>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&family=Roboto+Condensed:ital@1&display=swap" rel="stylesheet"> 
+  <script id="mustache-template" type="text/x0tmpl-mustache">
+    <section class="{{title}}">
+      <h2>{{title}}</h2>
+      <img src={{image_url}} alt={{title}} title={{title}}>
+      <p>{{description}}</p>
+    </section>
+  </script>
 </head>
 <body>
   <header>
     <h1>The Gallery of Horns</h1>
     <select>
       <option value="default">Filter by Keyword</option>
-      
-      
     </select>
+      <button id="button1" type ="button" >Page One</button>
+      <button id="button2" type ="button" >Page Two</button>
+      <button id="hornsorter" type ="button" >Horns!</button>
+      <button id="titlesorter" type ="button" >Titles</button>
   </header>
   <main>
     <section id="photo-template">
@@ -28,6 +37,7 @@
   <footer>
     &copy; 2018 Code Fellows
   </footer>
+  <script src="https://unpkg.com/mustache@latest"></script>
   <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
